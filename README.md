@@ -106,10 +106,4 @@ These documents define the assessment workflow, scoring logic, decision rules, e
 
 The agent provides advisory governance analysis. It does not replace legal, privacy, information-security, model-risk, procurement or regulatory approval. Scores remain provisional until facts and evidence are validated. Material changes in purpose, data, autonomy, affected people, model/provider or integrations require reassessment.
 
-## Portfolio summary
 
-Designed and tested an evidence-aware AI governance agent for assessing AI-enabled third parties. The agent applies a nine-dimension inherent-risk model, distinguishes verified evidence from vendor claims, identifies fourth-party dependencies and control gaps, and produces proportionate recommendations subject to human approval. It was validated through contrasting consumer-credit and low-risk workplace-assistant scenarios.
-
-## CV bullet
-
-Built and validated an AI Vendor Assurance Agent for contextual risk classification, evidence-gap analysis, third-party dependency review and human-governed approval recommendations.
