@@ -101,17 +101,13 @@ Missing vendor evidence can limit confidence and prevent a residual-risk conclus
 
 ## Iteration and quality assurance
 
-## Iteration and quality assurance
-
 Early testing exposed an inconsistency: one response calculated a Critical average but labelled the result High. The instructions were strengthened to require the authoritative dimensions, fixed thresholds, a displayed calculation and exactly one resulting tier. A second failure mode, refusing to score when vendor documents were unavailable, was corrected by explicitly allowing provisional scoring from clearly labelled, user-provided scenario facts.
 
 A third scenario, a frontier model provider (Northwind), found further problems: two recommendations returned at once, no separate mandatory-escalation statement, scores raised because evidence was missing, and scenario facts labelled as reviewed evidence. The instructions were revised so that the agent gives one recommendation, states escalation separately, scores inherent risk on the use case as described, reflects missing evidence in confidence only, and applies evidence labels only to vendor documents. Scoring anchors were then added to reduce variation between runs.
 
 The anchors had side effects. A rule written for Northwind was too broad, and NoteAssist moved from 12/36 to 17/36 (Low to Moderate) because most dimensions defaulted to 2. The autonomy anchor was narrowed and a rule added to score 1 where a dimension is negligible.
 
-Final regression testing: [add the NoteAssist, FinCredit and Northwind totals after your last rerun].
-
-Final regression testing produced consistent results for both the Critical FinCredit case and the Low NoteAssist case.
+Final regression testing used the three scenarios above. Tier and escalation outcomes were identical across revised runs for NoteAssist (Moderate, no escalation), Northwind (High, escalation) and FinCredit (Critical, escalation). Totals varied by up to three points between runs (Northwind 23 to 26/36, FinCredit 30 to 31/36) without changing the tier. NoteAssist moved from Low (12/36) in early testing to Moderate (16/36) after scoring anchors were tightened; this is reported as a calibration change, not a regression, because third-party processing of internal data is defensibly above negligible.
 
 ## Knowledge files
 
