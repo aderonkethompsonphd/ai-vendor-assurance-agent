@@ -1,24 +1,24 @@
 # AI Vendor Assurance Agent
 
-An evidence-aware Microsoft Copilot agent for structured assessment of AI-enabled vendors. The project demonstrates practical AI governance: inherent-risk classification, evidence-gap analysis, third- and fourth-party dependency review, proportionate decision recommendations, and mandatory human approval.
+An evidence-aware Microsoft Copilot agent for structured assessment of AI-enabled vendors. The project demonstrates practical AI governance: inherent-risk classification, evidence-gap analysis, third- and fourth-party dependency review, proportionate decision recommendations, and a required final human approval step.
 
 **Related:** the [AI Assurance Toolkit](https://github.com/aderonkethompsonphd/ai-assurance-toolkit) provides questionnaires, scoring and a frontier-developer assurance module. This agent applies a similar evidence-first approach as a human-in-the-loop assistant.
 
-This project was built as a hands-on exercise in AI governance: designing a repeatable assessment method, testing it, and documenting where it failed.
+This project was built as a hands-on exercise in AI governance: designing a structured assessment method, testing it, and documenting where it failed.
 
 ## Governance problem
 
-Vendor assessments often mix inherent risk with safeguards, treat unverified claims as evidence, or give inconsistent ratings. This agent applies a repeatable framework while making evidence limitations explicit.
+Vendor assessments often mix inherent risk with safeguards, treat unverified claims as evidence, or give inconsistent ratings. This agent applies a structured framework while making evidence limitations explicit.
 
 ## What the agent does
 
 - captures the proposed use case, affected people, data, autonomy and business impact;
 - scores nine authoritative inherent-risk dimensions on a 1–4 scale;
 - calculates one provisional tier using fixed thresholds;
-- keeps inherent risk separate from controls and residual risk;
+- is instructed to separate inherent risk from controls and residual risk;
 - distinguishes reviewed evidence from vendor or user assertions;
 - identifies missing evidence, control gaps and fourth-party dependencies;
-- recommends Proceed, Proceed with Conditions, or Escalate for Specialist Review;
+- recommends Proceed, Proceed with Conditions, Escalate for Specialist Review, or Do Not Proceed;
 - preserves human accountability for the final decision.
 
 ## Risk model
@@ -46,52 +46,35 @@ Vendor assessments often mix inherent risk with safeguards, treat unverified cla
 
 Safeguards such as certification, hosting location, contractual terms and human review are not used to reduce the inherent-risk score. Mandatory escalation triggers are assessed separately from the arithmetic result.
 
-## Test Scenarios
+## Latest scenario review — 10 October 2026
 
-### Northwind Foundation Models: frontier model provider scenario (fictional)
+The latest supplied outputs were reviewed using instruction revision v3. These are three demonstration runs, not evidence of full validation or repeatability.
 
-An energy utility proposes using a general-purpose language model API to summarise grid incident reports and draft operator advisories, with optional ticketing-system access and undisclosed subprocessors.
+| Fictional scenario | Total | Average | Tier | Mandatory escalation | Recommendation |
+|---|---:|---:|---|---|---|
+| NoteAssist: bounded administrative summaries, no actions, easy manual fallback | 16/36 | 1.78 | Moderate | No | Proceed with Conditions |
+| Northwind: grid incident summaries/advisories, optional ticketing actions | 26/36 | 2.89 | High | Yes | Escalate for Specialist Review |
+| FinCredit: consequential consumer-credit recommendations, weak review | 31/36 | 3.44 | Critical | Yes | Escalate for Specialist Review |
 
-- Average across revised runs: **2.56 to 2.89** (High every time)
-- Mandatory escalation: **Yes** (failure may affect safety or essential services)
-- Recommendation: **Escalate for Specialist Review**
-- Confidence: **Low to moderate**
+Arithmetic and summary consistency passed in these latest outputs. Recommendations distinguish bounded administrative use from consequential energy and lending use. The outputs distinguish scenario information and claims from reviewed evidence and do not assign residual risk without control evidence.
 
-The agent treated the safety framework and system card as not evidenced, identified the undisclosed subprocessors and ticketing integration as risks, and stated that human review does not reduce inherent risk. The tier, escalation trigger and recommendation were identical in every revised run; individual dimension scores varied by one point on two dimensions.
+**Remaining weakness:** some inherent-risk rationales still rely on missing documentation. NoteAssist's regulatory score, FinCredit's regulatory rationale, and Northwind's treatment of ticketing autonomy need further calibration. Scores are provisional, not validated objective measurements.
 
-### FinCredit AI — high-impact lending scenario
+See [test review and limitations](tests/REVIEW.md) and [original supplied outputs](tests/results/). NoteAssist's full latest output is not included; its reviewed summary is recorded. Existing screenshots show earlier runs and do not prove the latest configuration or results.
 
-The agent assessed an AI system producing consumer-loan approve/decline recommendations and risk scores. It processes identity and financial data, relies on an external foundation-model API for explanations, and normally expects employees to follow its recommendations.
+### Historical screenshots
 
-- Total: **31/36**
-- Average: **3.44**
-- Provisional tier: **Critical**
-- Mandatory escalation: **Yes**
-- Recommendation: **Escalate for Specialist Review**
+Earlier NoteAssist testing produced Low (12/36, 1.33). This is historical, not the latest result.
 
-The output correctly treated marketing claims as unverified, rejected an expired certificate as current assurance, identified the external model API as a fourth-party dependency, and did not treat nominal employee review as a reduction in inherent risk.
+![Earlier NoteAssist assessment](assets/noteassist_1.png)
 
-![FinCredit executive summary](assets/fincredit_summary.png)
+FinCredit screenshots also predate the latest instruction revision, even where the numerical result matches.
 
-![FinCredit calculation and escalation](assets/fincredit_calculation.png)
+![Earlier FinCredit summary](assets/fincredit_summary.png)
 
-![FinCredit recommended decision](assets/fincredit_decision.png)
+![Earlier FinCredit calculation](assets/fincredit_calculation.png)
 
-### NoteAssist — limited workplace summarisation
-
-**Latest documented result:** Moderate (16/36; average 1.78), with no mandatory escalation. The Low result below is retained as an **earlier test run**, before scoring-anchor calibration. The repository screenshots illustrate that earlier run; they do not substantiate the latest regression result.
-
-The contrasting scenario involved summarising internal, non-confidential meeting notes, with no decision or action authority and a narrow permitted-data scope.
-
-- Earlier-run total: **12/36**
-- Earlier-run average: **1.33**
-- Earlier-run provisional tier: **Low**
-- Mandatory escalation: **None identified**
-- Recommendation: **Proceed with Conditions**, subject to evidence validation
-
-This test demonstrated proportionality: the agent did not over-escalate a limited use case, while still identifying data-scope leakage, retention, subprocessor and evidence-verification concerns.
-
-![NoteAssist assessment](assets/noteassist_1.png)
+![Earlier FinCredit decision](assets/fincredit_decision.png)
 
 ## Evidence discipline
 
@@ -110,17 +93,13 @@ Missing vendor evidence can limit confidence and prevent a residual-risk conclus
 
 ## Iteration and quality assurance
 
-Early testing exposed an inconsistency: one response calculated a Critical average but labelled the result High. The instructions were strengthened to require the authoritative dimensions, fixed thresholds, a displayed calculation and exactly one resulting tier. A second failure mode, refusing to score when vendor documents were unavailable, was corrected by explicitly allowing provisional scoring from clearly labelled, user-provided scenario facts.
+Testing has exposed arithmetic/tier mismatches, treating missing evidence as risk, and unnecessary escalation of bounded administrative uses. Revisions clarified provisional scoring, evidence labels, separate escalation, conditional approval and human accountability.
 
-A third scenario, a frontier model provider (Northwind), found further problems: two recommendations returned at once, no separate mandatory-escalation statement, scores raised because evidence was missing, and scenario facts labelled as reviewed evidence. The instructions were revised so that the agent gives one recommendation, states escalation separately, scores inherent risk on the use case as described, reflects missing evidence in confidence only, and applies evidence labels only to vendor documents. Scoring anchors were then added to reduce variation between runs.
-
-The anchors had side effects. A rule written for Northwind was too broad, and NoteAssist moved from 12/36 to 17/36 (Low to Moderate) because most dimensions defaulted to 2. The autonomy anchor was narrowed and a rule added to score 1 where a dimension is negligible.
-
-The following regression findings are author-reported; complete per-run transcripts and the final deployed instruction export are not included in this repository. Final regression testing used the three scenarios above. Tier and escalation outcomes were identical across revised runs for NoteAssist (Moderate, no escalation), Northwind (High, escalation) and FinCredit (Critical, escalation). Totals varied by up to three points between runs (Northwind 23 to 26/36, FinCredit 30 to 31/36) without changing the tier. NoteAssist moved from Low (12/36) in early testing to Moderate (16/36) after scoring anchors were tightened; this is reported as a calibration change, not a regression, because third-party processing of internal data is defensibly above negligible.
+In the supplied v2 runs, NoteAssist no longer over-escalated, but Northwind displayed conflicting totals/tiers and a score placeholder. This failed output is retained. The v3 instructions require finalising scores before writing the summary and using consistent totals throughout. The latest three outputs passed calculation and decision checks, but scoring rationale only partially passed. No claim of identical outcomes across repeated v3 runs is made.
 
 ## Knowledge files
 
-The agent's knowledge files are in the repository as `.docx`, which are the versions loaded into the agent. Markdown copies are in `docs/` for easy reading and version comparison. If they differ, the `.docx` files are authoritative. The operating instructions use the same evidence labels as these knowledge documents. The published materials describe an advisory workflow requiring final human approval; this repository does not demonstrate a technical approval gate. The repository includes:
+The agent's knowledge files are in the repository as `.docx`, which are the versions loaded into the agent. Markdown copies are in `docs/` for easy reading and version comparison. The `.docx` files are the source for their Markdown copies. `AGENT_INSTRUCTIONS.md` contains the current runtime dimensions, thresholds, evidence labels and escalation clarifications. Flag any conflict; do not silently apply older, broader escalation rules from knowledge documents. The operating instructions use the same evidence labels as these knowledge documents. The published materials describe an advisory workflow requiring final human approval; this repository does not demonstrate a technical approval gate. The repository includes:
 
 1. `01_AI_Vendor_Assessment_Methodology.docx`
 2. `02_AI_Vendor_Risk_Scoring_and_Decision_Rules.docx`
@@ -128,9 +107,9 @@ The agent's knowledge files are in the repository as `.docx`, which are the vers
 
 These documents define the assessment workflow, scoring logic, decision rules, evidence expectations and control catalogue used by the agent.
 
-## Documentation update
+## Instruction revision
 
-The repository evidence labels have been aligned with the authoritative knowledge documents. Historical screenshots and reported regression results predate this documentation update. The deployed Copilot configuration has not been inspected or re-tested as part of this update; synchronise the revised operating instructions and repeat the scenario checks before claiming validation of this version.
+`AGENT_INSTRUCTIONS.md` is revision v3, below the 8,000-character limit. Latest outputs were supplied by the author after replacement in Copilot; the deployed configuration was not independently inspected. This repository describes a human-approval requirement, not a demonstrated technical approval gate.
 
 ## Limitations and human oversight
 

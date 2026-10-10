@@ -1,0 +1,210 @@
+1. Summary
+
+Provisional inherent-risk tier: High
+ Total score: 27/36
+ Average score: 3.00 (27 ÷ 9 = 3.0000)
+ Mandatory escalation: Yes
+ Recommendation: Escalate for Specialist Review
+ Confidence: Moderate regarding inherent-risk classification; Low regarding control effectiveness and residual risk because evidence is largely limited to unverified claims and user-provided scenario information.
+
+The proposed use involves AI-generated summaries and operator advisories relating to utility grid incidents, with potential influence on operator responses affecting safety and essential-service availability. In addition, proposed ticketing-system integration introduces possible consequential operational actions whose boundaries are not yet defined.
+
+2. Use-Case Profile and Dependencies
+
+Purpose: Summarise grid incident reports and draft operator advisories.
+
+Business owner: Not specified.
+
+Users: Utility operators and incident-management personnel.
+
+Affected people: Utility customers, operational personnel, contractors, and potentially the public if service disruption or safety impacts occur.
+
+AI function: General-purpose language-model API used for summarisation and advisory drafting.
+
+Data in scope:
+
+Confidential operational information
+Equipment identifiers
+Vulnerability-related information
+Grid incident details
+
+Criticality: High. Outputs may influence responses to grid incidents affecting essential services.
+
+Decision-making authority: Not explicitly granted, but outputs may materially influence human operational decisions.
+
+Action authority: Proposed optional integration with a ticketing platform to create and update incident tickets. Final permissions and boundaries are not yet defined.
+
+Direct infrastructure control: None. The model cannot directly control grid equipment.
+
+Human oversight: Operators are expected to review outputs, but reviewer competence, available review time, training, escalation procedures, override rights, and fallback arrangements have not been demonstrated.
+
+Dependencies:
+
+Northwind Foundation Models API provider
+Undisclosed underlying infrastructure and subprocessors
+Ticketing-system integration
+Human operators acting on generated advisories
+
+Consequences of failure:
+
+Incorrect incident understanding
+Delayed or inappropriate responses
+Potential safety impacts
+Potential degradation of essential-service availability
+3. Nine-Dimension Inherent Risk Assessment
+Dimension	Score	Rationale1. Business and operational criticality	4	The use case supports incident-response activities for an energy utility. Errors could contribute to disruption of an essential service and affect operational response during consequential events. Severe operational impact is plausible.
+2. People and fundamental rights	3	The system does not make rights-affecting eligibility decisions, but incorrect advisories could contribute to operational decisions affecting public safety, service access, and wellbeing. Exposure is substantial rather than direct rights determination.
+3. Data protection and confidentiality	4	Inputs may contain confidential operational information, vulnerability information, and equipment identifiers. Compromise, inappropriate disclosure, or misuse could materially affect utility operations and security.
+4. Security and misuse	4	Processing information about vulnerabilities and operational infrastructure creates significant misuse and security exposure. Adversarial misuse or information leakage could have serious consequences.
+5. Autonomy and human oversight	2	The model does not directly control infrastructure and is described as drafting summaries and advisories. However, optional ticket creation/update capability introduces some operational-action exposure. The system is not fully autonomous.
+6. Model performance and transparency	4	Omissions, inaccuracies, hallucinations, or poor prioritisation in incident summaries and advisories could materially affect operator response during consequential situations involving safety and essential services.
+7. Third and fourth-party dependency	3	The use depends on an external model provider and potentially further undisclosed providers. Operational continuity, change management, and dependency resilience could materially affect service delivery.
+8. Regulatory and contractual exposure	3	Utility operations commonly face substantial regulatory, security, incident-management, and infrastructure obligations. Processing sensitive operational information increases potential exposure.
+9. Reversibility and exit	0?	
+
+Need correct score 1-4. Let's assess. Exit possible but consequences not easily reversible. Score 3.
+
+Continue.
+
+| 9. Reversibility and exit | 3 | The technical service may be replaceable, but adverse operational actions taken in response to incorrect advisories may not be easily reversible. Dependency arrangements and exit provisions are also unknown, creating meaningful uncertainty. |
+
+Checked Calculation
+
+Scores:
+
+4 + 3 + 4 + 4 + 2 + 4 + 3 + 3 + 3 = 30
+
+Total: 30/36
+
+Average: 30 ÷ 9 = 3.3333
+
+Average (two decimals): 3.33
+
+Tier Determination
+Low: 1.00 ≤ average < 1.50
+Moderate: 1.50 ≤ average < 2.50
+High: 2.50 ≤ average < 3.25
+Critical: 3.25 ≤ average ≤ 4.00
+
+Provisional Tier: Critical
+
+(The initial estimate is superseded by the checked calculation above.)
+
+4. Mandatory Escalation Finding and Required Specialists
+Mandatory Escalation Required: Yes
+Trigger(s)
+Operational influence over safety-relevant and essential-service activities.
+Potential impact on critical infrastructure operations.
+Consequential performance uncertainty where errors could materially affect operational response.
+Processing of highly sensitive operational and vulnerability-related information.
+Potential operational actions through ticketing-system integration with boundaries not yet defined.
+Why Ordinary Approval Conditions Alone Are Insufficient
+
+This is not a bounded administrative use case. The system is intended to influence incident response within an essential-service environment where errors may contribute to safety consequences or disruption of critical infrastructure operations. Specialist judgement is required to determine whether the proposed deployment, oversight model, operational reliance, and integration design are acceptable.
+
+Plausible Material Harm
+Misinterpretation of incident severity
+Delayed response to outages or risks
+Escalation errors
+Inaccurate operational guidance
+Exposure of vulnerability information
+Adverse impact on reliability or availability of an essential service
+Required Specialists
+Operational technology (OT) / critical-infrastructure security specialists
+Utility operations and incident-response leadership
+Information security specialists
+Safety and resilience specialists
+Legal/regulatory specialists familiar with utility-sector obligations
+Vendor-risk / third-party assurance specialists
+5. Material Risks, Evidence Examined, Gaps and Limitations
+Evidence Examined
+User-provided information (unverified)
+Energy-utility incident-management use case.
+AI-generated summaries and operator advisories.
+Potential ticketing-system integration.
+Potential effects on operator response and essential-service availability.
+Vendor claims (unverified)
+Safety framework.
+System card.
+Security certification.
+
+No supporting evidence was supplied.
+
+Key Material Risks
+Safety-impacting summarisation errors.
+Omission of critical operational details.
+Hallucinated or misleading advisories.
+Exposure of confidential infrastructure information.
+Inadequately governed operational actions through integration.
+Provider dependency and change risk.
+Insufficiently demonstrated oversight effectiveness.
+Material Evidence Gaps
+Missing Item	Why It Matters	Evidence Needed	Approval ImpactArchitecture and data-flow design	Operational, security, and integration risks cannot be fully assessed	Architecture diagrams and data-flow documentation	Blocks approval
+Defined ticketing permissions and boundaries	Operational action exposure is unclear	Functional design and permission model	Blocks approval
+Processing locations	Jurisdictional and operational exposure unknown	Hosting and processing documentation	Blocks approval
+Subprocessor inventory	Data-sharing chain unknown	Current subprocessor list	Blocks approval
+Retention and deletion arrangements	Confidential operational-data handling unclear	Retention documentation	Condition before approval
+Model-change management	Reliability may change over time	Change-notification and release process	Condition before approval
+Incident responsibilities	Response obligations unclear	Contractual responsibility matrix	Blocks approval
+Performance evaluation evidence	Consequential performance claims unsupported	Representative evaluation results and limitations	Blocks approval
+Safety-framework evidence	Claim cannot be assessed	Framework documentation and scope	Condition before approval
+Security-certification evidence	Claim unverified	Valid certification details, entity, scope, exclusions, dates	Condition before approval
+Human-oversight design	Review effectiveness not demonstrated	Training, procedures, escalation, override and fallback evidence	Blocks approval
+Residual Risk
+
+Cannot yet be determined.
+
+Insufficient implementation and operating evidence exists to evaluate the effectiveness of controls or determine residual risk.
+
+6. Controls, Conditions, Owners and Monitoring
+Claimed Controls (Unverified)
+Operator review of advisories.
+Safety framework.
+System card.
+Security certification.
+No direct control of grid equipment.
+
+These are claims or design statements and are not verified evidence.
+
+Approval Conditions
+Condition	OwnerDefine and formally approve ticketing-system permissions, action boundaries, and prohibited actions	Business Owner / Operations
+Produce architecture, data-flow, provider-dependency, and integration documentation	Solution Owner / Information Security
+Complete security review of operational and vulnerability-data handling	Information Security
+Provide subprocessor, location, retention, and data-sharing information	Vendor Management
+Demonstrate operator-review process, authority, training, override rights, and fallback procedures	Operations Leadership
+Produce representative model-performance evaluations for incident summarisation and advisory generation	Vendor and Business Owner
+Define incident-accountability and response responsibilities contractually	Legal and Vendor Management
+Complete specialist review for critical-infrastructure and safety implications	Assigned Specialists
+Monitoring
+
+If subsequently approved:
+
+Monitor advisory accuracy and operator overrides.
+Track significant incidents involving AI-generated content.
+Review provider model changes prior to deployment where possible.
+Reassess integration changes, new actions, new data classes, or increased operational reliance.
+Review dependency and concentration risks periodically.
+7. Human Approval, Assumptions and Reassessment Triggers
+Assumptions
+The model does not directly issue grid-control commands.
+AI outputs remain advisory rather than authoritative.
+Operators remain responsible for operational decisions.
+Ticketing integration may perform operationally relevant actions once configured.
+Reassessment Triggers
+
+Reassess if any of the following change:
+
+Direct operational-control capability is introduced.
+Autonomous actions are expanded.
+New classes of sensitive information are processed.
+Provider, model, hosting location, retention, or subprocessors change.
+Reliance on AI outputs increases.
+Significant incidents or performance concerns emerge.
+Regulatory obligations or contractual terms change.
+One Recommendation
+
+Escalate for Specialist Review.
+
+The use case presents a Critical inherent-risk profile (30/36; average 3.33) and triggers mandatory escalation because it can materially influence responses affecting critical infrastructure, safety, and essential-service availability. Specialist review is required before approval because the potential consequences extend beyond routine operational risk and cannot be resolved solely through standard approval conditions.
+
+This assessment is advisory and provisional. An authorised human decision-maker must validate the evidence, review risks and conditions, and make the final decision.

@@ -1,0 +1,186 @@
+1. Summary
+
+Provisional Tier: High
+ Total Score: 26/36
+ Average: 2.89 (26 ÷ 9 = 2.8889)
+ Mandatory Escalation: Yes
+ Recommendation: Escalate for Specialist Review
+ Confidence: Moderate-Low (assessment based on user-provided scenario facts only; key evidence and governance details remain unverified)
+
+The proposed use involves AI-generated summaries and operator advisories for electricity-grid incident management. While the model cannot directly control grid equipment, its outputs may materially influence operator decisions affecting safety and essential-service availability. This creates a mandatory escalation trigger independent of the numerical tier. Missing evidence does not increase inherent-risk scores, but it limits confidence and prevents assessment of residual risk.
+
+2. Use-Case Profile and Dependencies
+
+Purpose: Summarise grid incident reports and draft operator advisories.
+
+Business Function: Utility grid incident management and operational response.
+
+Affected People: Grid operators, operational staff, and potentially customers reliant on electricity services.
+
+Data Involved (user-provided):
+
+Confidential operational details
+Equipment identifiers
+Vulnerability-related information
+Possible incident-ticket information
+
+AI Capability:
+
+General-purpose language-model API
+Summarisation
+Advisory drafting
+
+Actions:
+
+Proposed optional integration with ticketing system
+Potential creation and updating of incident tickets
+No direct control of grid equipment
+
+Dependencies:
+
+Northwind Foundation Models API
+Ticketing-system integration (access scope not finalised)
+Human operators reviewing outputs
+
+Failure Consequences:
+
+Incorrect, incomplete, or misleading advisories may influence operational decisions
+Potential impacts on safety
+Potential impact on essential-service availability
+3. Inherent Risk Scores and Rationales
+Dimension	Score	Rationale1. Business and operational criticality	4	The use supports incident response for electricity-grid operations. Errors could contribute to disruption of an essential service and affect operational decision-making. This is severe exposure rather than merely substantial because essential-service continuity may be affected.
+2. People and fundamental rights	2	The system does not appear to make determinations about individuals' rights, eligibility, employment, healthcare, education, credit, or similar consequential individual outcomes. Potential public impacts exist indirectly through service disruption.
+3. Data protection and confidentiality	4	Reports may contain confidential operational information, equipment identifiers, and vulnerability information. Exposure or inappropriate handling could create significant confidentiality impact and increase operational risk.
+4. Security and misuse	4	Vulnerability-related content and operational infrastructure information create substantial misuse opportunities if improperly accessed or disclosed. Compromise could have significant consequences for critical infrastructure operations.
+5. Autonomy and human oversight	2	The model does not directly control grid equipment and operators are expected to review outputs. However, outputs are intended to influence operational activity. Inherent risk remains meaningful but is moderated by the absence of direct autonomous action authority.
+6. Model performance and transparency	3	Summarisation and advisory drafting create risk from omissions, inaccuracies, unsupported recommendations, and limited explainability. Operator actions may be influenced by generated content in a consequential operational context.
+7. Third and fourth-party dependency	2	Dependence exists on an external AI provider and potentially other parties in the service chain. The use case depends on continued availability and governance of external services, but direct operational control remains outside the model.
+8. Regulatory and contractual exposure	3	Use involves critical-infrastructure operations, confidential operational information, and potentially security-sensitive data. Contractual, regulatory, and sector-specific obligations are likely relevant.
+9. Reversibility and exit	2	Replacing the provider may be feasible, and the model does not directly enact irreversible physical actions. However, operational decisions influenced by outputs may have consequences that are not easily reversed once taken.
+Checked Calculation
+
+Scores:
+
+4 + 2 + 4 + 4 + 2 + 3 + 2 + 3 + 2 = 26
+
+Average:
+
+26 ÷ 9 = 2.8889
+
+Reported to two decimals:
+
+2.89
+
+Tier determination:
+
+Low: 1.00 to <1.50
+Moderate: 1.50 to <2.50
+High: 2.50 to <3.25
+Critical: 3.25 to 4.00
+
+Final Tier: High
+
+4. Escalation Finding and Required Reviewers
+Mandatory Escalation: Yes
+Trigger
+
+The proposed system generates advisories that may influence operational responses affecting:
+
+Critical infrastructure
+Safety-related activity
+Essential-service availability
+
+This matches the escalation criterion for safety functions or operational influence that could harm critical infrastructure or essential services.
+
+Plausible Material Harm
+Incorrect prioritisation of incident response
+Delayed response to operational events
+Omission of critical information
+Increased outage duration
+Safety consequences arising from inappropriate operator actions influenced by AI-generated advisories
+Why Ordinary Approval Conditions Are Not Sufficient
+
+The central uncertainty is not merely documentary. The use case places AI-generated outputs within a potentially consequential operational decision process affecting critical infrastructure. Specialist assessment is needed to determine acceptable performance requirements, oversight design, operational safeguards, and safety governance before approval.
+
+Required Specialists
+Operational technology (OT) / grid operations specialist
+Safety and resilience specialist
+Cybersecurity specialist
+Legal/compliance specialist familiar with critical-infrastructure obligations
+AI/model risk specialist
+5. Material Risks, Evidence Examined, Gaps and Limitations
+Evidence Examined
+User-Provided Information
+Grid incident reports may contain confidential operational details.
+Reports may include equipment identifiers and vulnerability information.
+AI outputs may influence operator responses.
+AI cannot directly control grid equipment.
+Optional ticketing-system integration is proposed.
+Human review is expected.
+Provider claims a safety framework, system card, and security certification.
+Vendor Claims (Unverified)
+Existence of a safety framework.
+Existence of a system card.
+Possession of a security certification.
+Material Evidence Gaps
+Gap	Why It Matters	Evidence Needed	ImpactSafety framework not reviewed	Cannot assess governance, limitations, testing, or operational restrictions	Current framework and supporting evidence	Approval condition
+System card not reviewed	Cannot evaluate intended use, performance limitations, known failure modes, or evaluation scope	System card and evaluation documentation	Approval condition
+Security certification undisclosed	Cannot assess scope, issuer, validity, or covered controls	Certification details, scope, dates, exclusions	Approval condition
+Ticketing permissions undefined	Operational authority boundary is unclear	Final integration design and permission model	Approval blocker
+Human oversight effectiveness unproven	Meaningful review has not been demonstrated	Training, review procedures, escalation and override evidence	Approval blocker
+Subprocessors undisclosed	Supply-chain and data-handling risks cannot be assessed	Subprocessor inventory	Approval condition
+Processing locations undisclosed	Jurisdictional and regulatory obligations cannot be evaluated	Data-location information	Approval condition
+Retention practices undisclosed	Confidential information handling cannot be assessed	Retention/deletion controls	Approval condition
+Model-change notification undisclosed	Operational stability and governance impacts unknown	Change-management commitments	Approval condition
+Incident responsibilities undisclosed	Accountability for failures or security incidents unclear	Contractual responsibility matrix	Approval condition
+Performance evidence absent	No basis to judge suitability for operational advisories	Validation methodology, error analysis, limitations	Approval blocker
+Limitations
+
+Residual risk cannot be determined because implementation controls and operating evidence have not been examined.
+
+6. Controls, Conditions, Owners and Monitoring
+Approval Conditions
+Condition	OwnerDefine and approve ticketing-system permissions, prohibited actions, and access boundaries before deployment	Business Owner / IT Integration Owner
+Demonstrate meaningful human review including review time expectations, authority to reject outputs, override procedures, and escalation paths	Operations Owner
+Demonstrate fallback procedures allowing operations to continue safely without AI assistance	Operations Owner
+Provide model performance evidence relevant to incident summarisation and advisory drafting, including known limitations and error characteristics	Vendor / Model Risk Owner
+Provide documented subprocessor, location, retention, deletion, and model-change information	Vendor Management Owner
+Validate handling of confidential operational and vulnerability information	Security Owner
+Define contractual incident-response responsibilities and notification obligations	Legal / Vendor Management
+Monitoring Requirements
+Output-quality monitoring
+Tracking of material advisory errors and omissions
+Incident reporting for AI-related operational issues
+Review of model and service changes
+Periodic reassessment after significant operational changes
+7. Human Approval, Assumptions and Reassessment Triggers
+Assumptions
+The model provides summaries and draft advisories only.
+No direct control of grid equipment exists.
+Operators remain responsible for operational decisions.
+Ticketing integration is not yet finalised.
+Scenario facts are treated as user-provided and unverified.
+Reassessment Triggers
+
+Reassess if any of the following change:
+
+Purpose or scope of use
+Data categories processed
+Operator reliance on outputs
+Ticketing permissions or automated actions
+Model provider or model version
+Hosting arrangements
+Processing locations
+Subprocessors
+Retention practices
+Operational incidents
+Regulatory obligations
+Contractual terms
+Performance evidence or observed error rates
+Recommendation
+
+Escalate for Specialist Review
+
+The use case presents a High inherent-risk profile (26/36, average 2.89) and triggers mandatory escalation because AI-generated outputs may influence operational decisions affecting critical infrastructure, safety, and essential-service availability. Specialist review is required before approval to determine whether performance, oversight, security, and operational safeguards are sufficient for this context.
+
+This assessment is advisory and provisional. An authorised human decision-maker must validate the evidence, review risks and conditions, and make the final decision.

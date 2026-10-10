@@ -1,0 +1,251 @@
+1. Summary
+
+Provisional inherent-risk tier: Critical
+ Total score: 33/36
+ Average score: 3.67 (33 ÷ 9 = 3.6667, rounded to two decimals)
+ Mandatory escalation: Yes
+ Recommendation: Escalate for Specialist Review
+ Confidence: Moderate for inherent-risk classification; Low for any assessment of control effectiveness because evidence is largely absent and vendor assertions are unverified.
+
+This use case concerns consumer-credit decisions that can materially affect individuals' financial opportunities and wellbeing. The AI system produces approve/decline recommendations and risk scores, and employee review does not currently appear demonstrably meaningful due to limited explanations, limited review time, and lack of an established challenge process.
+
+2. Use-Case Profile and Dependencies
+
+Purpose: Support consumer-loan underwriting through approve/decline recommendations and risk scores.
+
+Users: Lending employees making credit decisions.
+
+Affected people: Consumer-loan applicants.
+
+Data in scope:
+
+Identity information
+Income information
+Financial history
+Other personal financial information
+
+Sensitivity: High. Personal financial information directly connected to credit decisions.
+
+AI function:
+
+Credit-risk scoring
+Approval/decline recommendation generation
+Explanation generation
+
+Decision authority:
+
+Employees formally make final decisions.
+Employees reportedly normally follow system recommendations.
+
+Human review assessment:
+
+Review appears unlikely to be meaningfully demonstrated based on the scenario.
+Employees have limited explanations.
+Employees have little review time.
+No demonstrated procedure exists for challenging scores.
+No demonstrated override or escalation process is described.
+The available facts create a risk that review functions as a rubber-stamp process rather than an effective independent assessment.
+
+Model and provider dependencies:
+
+FinCredit AI service
+External foundation-model API used for explanation generation
+
+Third- and fourth-party dependencies:
+
+Third party
+
+FinCredit AI vendor
+
+Fourth parties
+
+External foundation-model API provider used by FinCredit AI
+Any underlying infrastructure, cloud providers, subprocessors, or service providers supporting that foundation-model provider (currently undisclosed)
+
+Unknown dependency attributes
+
+Data-sharing scope
+Processing locations
+Retention periods
+Subprocessors
+Incident responsibilities
+Change-management arrangements
+
+Consequences of failure:
+
+Incorrect denial of credit
+Inappropriate approval of credit
+Financial harm to applicants
+Potential discriminatory or unfair outcomes
+Regulatory and legal consequences
+3. Nine-Dimension Inherent Risk Assessment
+Dimension	Score (1-4)	Rationale1. Business and operational criticality	4	The system directly supports consumer-credit underwriting and recommendation generation for consequential lending decisions. Errors can materially affect individuals and business outcomes.
+2. People and fundamental rights	4	Access to consumer credit is a consequential rights-affecting and life-affecting decision area. Incorrect recommendations may deny opportunities or cause financial harm.
+3. Data protection and confidentiality	4	The system processes personal financial information, identity data, income data, and financial history. Exposure or misuse could significantly affect individuals.
+4. Security and misuse	3	Financial and identity-related information creates substantial misuse and fraud exposure. The system handles information that would be attractive to malicious actors.
+5. Autonomy and human oversight	4	Employees formally decide, but normally follow recommendations, have limited explanations, little review time, and no demonstrated challenge process. Based on the scenario, meaningful independent oversight is not demonstrated.
+6. Model performance and transparency	4	The model generates consequential recommendations affecting access to credit. Unsupported performance claims, limited explainability, and potentially opaque scoring create severe exposure.
+7. Third and fourth-party dependency	3	Decision support relies on the vendor plus at least one external foundation-model provider. Data-sharing arrangements, locations, retention, subprocessors, and dependency governance are unknown.
+8. Regulatory and contractual exposure	4	Consumer lending is typically subject to significant legal, regulatory, fairness, accountability, and record-keeping obligations. Errors may create substantial regulatory exposure.
+9. Reversibility and exit	3	A vendor may be replaceable, but harm from an adverse credit decision may not be easily reversible for affected individuals. Vendor replacement and reversal of applicant impacts are distinct issues.
+Checked Calculation
+
+Scores:
+
+4 + 4 + 4 + 3 + 4 + 4 + 3 + 4 + 3 = 33
+
+Total: 33/36
+
+Average:
+
+33 ÷ 9 = 3.6667
+
+Average (two decimals): 3.67
+
+Tier Determination
+Low: 1.00 ≤ average < 1.50
+Moderate: 1.50 ≤ average < 2.50
+High: 2.50 ≤ average < 3.25
+Critical: 3.25 ≤ average ≤ 4.00
+
+Provisional Tier: Critical
+
+4. Mandatory Escalation Finding and Required Specialists
+Mandatory Escalation Required: Yes
+Escalation Trigger
+
+This use case involves:
+
+Consequential credit decisions affecting individuals.
+Personal financial information.
+Potential financial harm from inaccurate recommendations.
+Potential fairness and discrimination concerns.
+Unsupported consequential performance claims.
+Limited evidence of meaningful human oversight.
+Material dependency on external providers involved in explanation generation.
+Why Ordinary Approval Conditions Alone Are Insufficient
+
+This is not a limited administrative use case. The system influences lending decisions that can materially affect applicants' access to financial products and opportunities. Specialist review is needed to assess fairness, regulatory obligations, oversight effectiveness, explainability, performance suitability, and third-/fourth-party risk before deployment decisions are made.
+
+Plausible Material Harm
+Unjustified denial of credit
+Financial loss
+Unequal treatment of applicants
+Regulatory violations
+Customer complaints and litigation
+Reputational harm
+Required Specialists
+Consumer-credit compliance specialists
+Legal and regulatory counsel for lending activities
+Model risk management specialists
+Fairness and responsible AI specialists
+Privacy specialists
+Third-party risk specialists
+5. Material Risks, Evidence Examined, Gaps and Limitations
+Evidence Examined
+User-provided information
+Credit approval recommendation use case.
+Processing of personal financial information.
+Employees usually follow model recommendations.
+Limited explanation availability.
+Limited review time.
+No demonstrated challenge process.
+External foundation-model dependency.
+Vendor Claims (Unverified)
+98% accuracy.
+Unbiased decisions.
+Regulatory compliance.
+
+These are assertions only and should not be treated as validated evidence.
+
+Additional Vendor Claim (Unverified)
+Security certification previously existed but is said to have expired six months ago.
+
+No certificate, renewal evidence, scope information, issuer information, or current assurance evidence has been supplied. No review of any certificate has occurred.
+
+Material Risks
+Incorrect approval recommendations.
+Incorrect denial recommendations.
+Undetected discriminatory outcomes.
+Inadequate explainability.
+Automation bias by decision-makers.
+Excessive reliance on AI-generated scores.
+Personal-data handling uncertainty.
+Fourth-party data exposure through external model providers.
+Material Evidence Gaps
+Missing Item	Why It Matters	Evidence Needed	ImpactPerformance evaluation methodology	Accuracy claim cannot be assessed	Methodology, datasets, assumptions, limitations	Blocks approval
+Representative testing evidence	Consequential performance requires validation	Performance results on representative lending data	Blocks approval
+Subgroup and fairness analysis	Bias claim cannot be assessed	Fairness testing and subgroup outcomes	Blocks approval
+Independent validation	Vendor assertions are insufficient	Independent validation or challenge review	Blocks approval
+Human-oversight design	Meaningful review not demonstrated	Review procedures, challenge rights, overrides, escalation process, time expectations	Blocks approval
+Explanation methodology	Decision transparency unclear	Explanation design and validation evidence	Condition before approval
+External model data-sharing details	Data exposure cannot be assessed	Data-flow documentation	Blocks approval
+Processing locations	Legal and privacy implications unclear	Location information	Condition before approval
+Retention arrangements	Data lifecycle unknown	Retention and deletion evidence	Condition before approval
+Subprocessor inventory	Dependency chain unclear	Current subprocessor list	Condition before approval
+Incident responsibilities	Accountability unclear	Contractual responsibility matrix	Condition before approval
+Current security assurance	Expired certification does not demonstrate current assurance	Current security-assurance evidence	Blocks approval
+Residual Risk
+
+Residual risk cannot yet be determined.
+
+There is insufficient implementation and operating-effectiveness evidence to support a credible residual-risk assessment.
+
+6. Controls, Conditions, Owners and Monitoring
+Current Control Observations
+
+Employee review is described, but the available facts do not demonstrate that review is meaningful because:
+
+Employees normally follow recommendations.
+Explanations are limited.
+Review time is limited.
+No demonstrated challenge procedure exists.
+No demonstrated escalation path exists.
+No demonstrated override framework exists.
+
+Therefore, meaningful independent review cannot currently be concluded.
+
+Approval Conditions
+Condition	OwnerValidate model performance using representative lending datasets	Business Owner / Model Risk
+Obtain fairness and subgroup testing evidence	Responsible AI / Model Risk
+Demonstrate meaningful human review, challenge, override, and escalation procedures	Lending Operations
+Document all third- and fourth-party data flows	Vendor Management
+Obtain processing-location, retention, and subprocessor information	Privacy / Vendor Management
+Establish contractual accountability and incident responsibilities	Legal / Procurement
+Provide current security-assurance evidence	Information Security
+Independently assess explanation quality and suitability	Model Risk / Responsible AI
+Monitoring
+
+If later approved:
+
+Monitor approval and denial outcomes.
+Monitor fairness and subgroup performance.
+Track override rates.
+Monitor model and provider changes.
+Review incidents, complaints, and regulatory findings.
+Reassess changes in providers, models, processing locations, or data-sharing arrangements.
+7. Human Approval, Assumptions and Reassessment Triggers
+Assumptions
+Recommendations are used in consumer-lending decisions.
+Explanation generation uses an external foundation-model API.
+Employees generally follow AI recommendations.
+No demonstrated challenge process currently exists.
+Reassessment Triggers
+
+Reassess if:
+
+The purpose or decision authority changes.
+New data types are processed.
+New providers or subprocessors are introduced.
+Processing locations change.
+Retention arrangements change.
+Greater automation is introduced.
+Performance issues, complaints, litigation, or regulatory concerns emerge.
+Human-review procedures change materially.
+One Recommendation
+
+Escalate for Specialist Review.
+
+The use case presents a Critical inherent-risk profile (33/36, average 3.67) and triggers mandatory escalation because it supports consequential consumer-credit decisions, processes sensitive financial information, relies on inadequately evidenced performance claims, and does not currently demonstrate meaningful human oversight. Specialist review is required before any approval decision.
+
+This assessment is advisory and provisional. An authorised human decision-maker must validate the evidence, review risks and conditions, and make the final decision.

@@ -1,0 +1,214 @@
+1. Summary
+
+Provisional inherent-risk tier: Critical
+ Total score: 31/36
+ Average score: 3.44 (31 ÷ 9 = 3.444444...)
+ Mandatory escalation: Yes
+ Recommendation: Escalate for Specialist Review
+ Confidence: Low to Moderate, due to significant evidence gaps and reliance on unverified vendor claims.
+
+The proposed use concerns consumer-credit decisions with potentially significant financial impacts on individuals. Human review appears unlikely to be meaningful because employees normally follow recommendations, have limited explanations, limited review time, and no demonstrated challenge procedure. The scenario also includes unresolved transparency, performance, security, privacy, and dependency concerns.
+
+2. Use-Case Profile and Dependencies
+
+Purpose: Consumer-loan application assessment.
+
+Function: Produces approve/decline recommendations and risk scores.
+
+Affected people: Consumer-loan applicants.
+
+Data processed (user-provided information):
+
+Identity details
+Income information
+Financial history
+Other personal financial information
+
+Decision impact: May affect access to credit and create financial harm if recommendations are incorrect.
+
+Oversight model: Employees formally make the final decision but normally follow the system recommendation.
+
+Meaningfulness of human review:
+
+Human approval exists formally.
+However, employees normally follow the recommendation.
+Explanations are limited.
+Review time is limited.
+No demonstrated challenge or override procedure exists.
+Therefore, based on the scenario, oversight appears not demonstrably meaningful and may function as a rubber-stamp review rather than an effective independent assessment.
+
+Third-party dependency:
+
+FinCredit AI service provider.
+
+Fourth-party dependencies identified:
+
+External foundation-model API used to generate explanations.
+Any associated infrastructure, hosting, subprocessors, or model providers supporting that external API (specific entities unknown).
+Data sharing, retention, processing locations, and subprocessing arrangements for the external foundation-model provider are unknown.
+3. Nine-Dimension Inherent Risk Assessment
+Dimension	Score	Rationale1. Business and operational criticality	3	Consumer-credit decisions are important business functions with potential financial consequences for applicants and the lender.
+2. People and fundamental rights	4	Credit-access decisions can materially affect individuals' financial opportunities and economic well-being. Incorrect outcomes may deny access to credit or cause financial harm.
+3. Data protection and confidentiality	4	Sensitive personal and financial information is processed. Data-sharing, retention, and processing-location arrangements relating to the external explanation provider are unknown.
+4. Security and misuse	3	Personal financial data is involved and security assurance evidence is missing. An expired certificate is noted, but no evidence has been reviewed regarding current security controls.
+5. Autonomy and human oversight	4	Employees formally decide, but normally follow recommendations. Limited explanations, little review time, and no demonstrated challenge process indicate potentially ineffective oversight.
+6. Model performance and transparency	4	Consequential decisions are supported by AI outputs, while accuracy, bias, validation, methodology, subgroup performance, and independent evaluation evidence are absent.
+7. Third and fourth-party dependency	3	The service depends on the vendor and an external foundation-model API. Important dependency details such as data handling and operational arrangements are unknown.
+8. Regulatory and contractual exposure	4	Consumer-credit decisioning involves substantial regulatory exposure. Unsupported claims of compliance and lack of supporting evidence increase inherent exposure.
+9. Reversibility and exit	2	Harmful credit decisions may affect individuals, but the scenario does not establish severe technical lock-in. Exit arrangements remain uncertain due to missing information.
+Checked Calculation
+3 + 4 + 4 + 3 + 4 + 4 + 3 + 4 + 2 = 31
+31 / 9 = 3.44 (two decimals)
+Tier threshold: 3.25–4.00 = Critical
+
+Final Inherent Risk Tier: Critical
+
+4. Mandatory Escalation Finding and Reviewers
+
+Mandatory Escalation: Yes
+
+Trigger(s)
+
+Consequential credit decisioning
+
+The system influences approve/decline outcomes for consumer loans.
+
+Potential impact on individual rights and financial outcomes
+
+Incorrect recommendations could deny access to credit or cause financial harm.
+
+Inadequate demonstrated oversight of consequential decisions
+
+Human review does not appear demonstrably meaningful.
+
+Unsupported consequential performance and compliance claims
+
+Accuracy, bias, and compliance assertions are unverified.
+
+Material unresolved processing and dependency uncertainty
+
+External foundation-model usage involves unknown data handling, retention, and processing locations.
+Why ordinary approval conditions alone are insufficient
+
+The uncertainty affects core questions about fairness, reliability, transparency, privacy, and governance in a rights-affecting use case. These issues directly influence whether decision support can be used safely and lawfully and therefore warrant specialist review rather than routine approval.
+
+Relevant specialists
+AI/Model Risk
+Privacy/Data Protection
+Consumer Credit/Regulatory Compliance
+Information Security
+Legal/Contracting
+5. Material Risks, Evidence Examined, Gaps and Limitations
+Evidence Examined
+User-provided information
+Consumer-loan recommendation and scoring use case.
+Human decision-makers usually follow recommendations.
+Limited explanations and review time.
+No demonstrated challenge procedure.
+External foundation-model API generates explanations.
+Unknown data sharing, retention, and processing locations.
+Expired security certificate reported by vendor.
+Vendor claims (unverified)
+98% accuracy.
+Unbiased decisions.
+Regulatory compliance.
+
+These remain vendor claims only because no supporting evidence has been supplied.
+
+Limitations
+No methodology reviewed.
+No validation reports reviewed.
+No subgroup analysis reviewed.
+No compliance evidence reviewed.
+No security certificate reviewed.
+No operating-effectiveness evidence reviewed.
+No contractual, privacy, or architectural documentation reviewed.
+Material Evidence Gaps
+Gap 1: Performance and accuracy validation
+Missing: Evaluation methodology, test design, representative datasets, error rates, limitations.
+Why it matters: Consequential credit decisions require demonstrable reliability.
+Evidence needed: Independent validation reports and performance documentation.
+Owner/action: Vendor.
+Impact: Blocks informed approval.
+Gap 2: Fairness and bias assessment
+Missing: Subgroup outcomes, fairness testing, bias monitoring results.
+Why it matters: Credit decisions may disproportionately affect groups.
+Evidence needed: Fairness analysis and subgroup performance results.
+Owner/action: Vendor.
+Impact: Blocks informed approval.
+Gap 3: Human oversight design
+Missing: Demonstrated override, challenge, escalation, and review procedures.
+Why it matters: Current review appears potentially ineffective.
+Evidence needed: Governance procedures, training materials, audit evidence.
+Owner/action: Vendor and business owner.
+Impact: Blocks informed approval.
+Gap 4: Privacy and data-processing controls
+Missing: Data flows, retention periods, processing locations, subprocessors, and applicable agreements.
+Why it matters: Personal financial information is involved.
+Evidence needed: Privacy documentation, data-flow diagrams, retention schedules, DPA where applicable.
+Owner/action: Vendor.
+Impact: Blocks informed approval.
+Gap 5: Security assurance
+Missing: Current security certification evidence and broader security-control evidence.
+Why it matters: Sensitive financial information is processed.
+Evidence needed: Valid certification details (if applicable), scope information, and supporting security assurance documentation.
+Owner/action: Vendor.
+Impact: Approval condition and confidence reduction.
+Gap 6: Fourth-party governance
+Missing: Foundation-model provider arrangements, subprocessors, locations, obligations, and controls.
+Why it matters: Explanations rely on an external dependency.
+Evidence needed: Dependency inventory and contractual assurances.
+Owner/action: Vendor.
+Impact: Blocks informed approval.
+6. Controls, Conditions, Owners and Monitoring
+Observed Control Considerations
+Human review
+
+Present formally, but effectiveness is not demonstrated.
+
+Conditions that would require evidence before any approval decision
+Condition	OwnerIndependent performance validation supplied	Vendor
+Fairness and subgroup testing supplied	Vendor
+Meaningful human-review and override process demonstrated	Vendor & Business Owner
+Privacy, retention, location, and data-sharing evidence supplied	Vendor
+Fourth-party dependency information supplied	Vendor
+Security assurance evidence supplied	Vendor
+Appropriate contractual and data-protection documentation reviewed	Vendor & Legal
+Monitoring
+
+Monitoring may be appropriate after implementation, but monitoring cannot substitute for currently unresolved assurance gaps affecting consequential credit decisions.
+
+Residual Risk
+
+Residual risk cannot be determined.
+
+Supporting implementation evidence and operating-effectiveness evidence have not been provided.
+
+7. Human Approval, Assumptions and Reassessment Triggers
+Assumptions
+The system materially influences consumer-loan decisions.
+Applicant financial data is processed as described.
+Human reviewers generally follow recommendations.
+Vendor statements remain unverified claims.
+Reassessment Triggers
+
+Reassessment should occur if there are material changes to:
+
+Purpose or decision authority
+Data categories processed
+Human-review process
+Foundation-model provider
+Subprocessors
+Hosting or processing locations
+Retention arrangements
+Performance evidence
+Security posture
+Regulatory obligations
+Contracts or data-sharing arrangements
+Final Recommendation
+
+Escalate for Specialist Review
+
+This recommendation is based on consequential credit decisioning, apparently non-meaningful human oversight, unsupported performance/compliance claims, unresolved privacy and security uncertainties, and undisclosed fourth-party dependencies.
+
+This assessment is advisory and provisional. An authorised human decision-maker must validate the evidence, review risks and conditions, and make the final decision.
