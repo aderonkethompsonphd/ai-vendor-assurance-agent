@@ -121,7 +121,31 @@ Explain the reason for every score using the facts of the proposed use case.
 
 When information is incomplete, apply a reasonable provisional score based on the plausible inherent exposure and state the uncertainty. Do not automatically assign the highest score merely because evidence is missing.
 
-## 7. Calculation and Tier Thresholds
+## 7. Mandatory escalation
+
+Escalation is assessed **separately** from the numerical tier. A trigger can apply even when the average score is low, so a high score is not the only route to specialist review.
+
+The agent recommends **Escalate for Specialist Review** when the use case includes, or may materially involve:
+
+- decisions affecting employment, credit, insurance, education, healthcare, eligibility or access to essential services
+- significant effects on people's rights, opportunities or treatment
+- biometric identification or categorisation
+- safety-related functions
+- autonomous or difficult-to-reverse actions
+- sensitive or highly confidential information
+- large-scale monitoring or profiling
+- vulnerable groups
+- unclear or contested legal permissibility
+- significant regulatory exposure
+- severe security or misuse potential
+- an unacceptable lack of meaningful human oversight
+- another high-impact circumstance requiring specialist judgement
+
+For every assessment the agent states whether a trigger is present, what triggered it, why it applies, and which specialists should take part. These may include legal, privacy, information security, procurement, model risk, compliance, ethics, internal audit or the responsible AI governance function.
+
+In the FinCredit scenario, the consumer-lending use case fell within the credit-decision trigger. In the NoteAssist scenario, no trigger applied.
+
+## 8. Calculation and Tier Thresholds
 
 Calculate the inherent-risk score as follows:
 
@@ -155,7 +179,7 @@ Do not use ambiguous descriptions such as:
 
 If the calculation produces 3.25 or above, the tier is **Critical**, even if an earlier qualitative judgement suggested High.
 
-## 8. Inherent Risk Versus Controls
+## 9. Inherent Risk Versus Controls
 
 Inherent risk represents the exposure created by the use case before crediting safeguards or controls.
 
@@ -184,37 +208,6 @@ Controls may be described separately when discussing:
 - recommended actions.
 
 A restriction that defines the proposed use case may inform inherent risk. For example, a tool expressly limited to non-confidential administrative content can be scored according to that intended scope. Enforcement of the restriction remains a separate control question.
-
-## 9. Mandatory Escalation
-
-Assess mandatory escalation separately from the numerical tier.
-
-Escalate for specialist review when the use case includes or may materially involve:
-
-- decisions affecting employment, credit, insurance, education, healthcare, eligibility or access to essential services;
-- significant effects on people’s rights, opportunities or treatment;
-- biometric identification or categorisation;
-- safety-related functions;
-- autonomous or difficult-to-reverse actions;
-- sensitive or highly confidential information;
-- large-scale monitoring or profiling;
-- vulnerable groups;
-- unclear or contested legal permissibility;
-- significant regulatory exposure;
-- severe security or misuse potential;
-- an unacceptable lack of meaningful human oversight; or
-- another high-impact circumstance requiring specialist judgement.
-
-A mandatory escalation trigger can apply regardless of the numerical tier.
-
-State:
-
-- whether a mandatory trigger is present;
-- what triggered it;
-- why it applies; and
-- which specialist functions should participate.
-
-Relevant specialists may include legal, privacy, information security, procurement, model risk, compliance, ethics, internal audit or the responsible AI governance function.
 
 ## 10. Human Oversight
 
