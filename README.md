@@ -42,7 +42,7 @@ Vendor assessments often mix inherent risk with safeguards, treat unverified cla
 
 Safeguards such as certification, hosting location, contractual terms and human review are not used to reduce the inherent-risk score. Mandatory escalation triggers are assessed separately from the arithmetic result.
 
-## Validation results
+## Test Scenarios
 
 ### FinCredit AI — high-impact lending scenario
 
