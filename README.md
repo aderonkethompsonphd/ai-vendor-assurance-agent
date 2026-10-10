@@ -4,6 +4,8 @@ An evidence-aware Microsoft Copilot agent for structured assessment of AI-enable
 
 **Related:** the [AI Assurance Toolkit](https://github.com/aderonkethompsonphd/ai-assurance-toolkit) provides questionnaires, scoring and a frontier-developer assurance module. This agent applies a similar evidence-first approach as a human-in-the-loop assistant.
 
+This project was built as a hands-on exercise in AI governance: designing a repeatable assessment method, testing it, and documenting where it failed.
+
 ## Governance problem
 
 Vendor assessments often mix inherent risk with safeguards, treat unverified claims as evidence, or give inconsistent ratings. This agent applies a repeatable framework while making evidence limitations explicit.
