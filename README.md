@@ -50,7 +50,7 @@ Safeguards such as certification, hosting location, contractual terms and human 
 
 An energy utility proposes using a general-purpose language model API to summarise grid incident reports and draft operator advisories, with optional ticketing-system access and undisclosed subprocessors.
 
-- Average across revised runs: **2.78 to 2.89** (High)
+- Average across revised runs: **2.56 to 2.89** (High every time)
 - Mandatory escalation: **Yes** (failure may affect safety or essential services)
 - Recommendation: **Escalate for Specialist Review**
 - Confidence: **Low to moderate**
