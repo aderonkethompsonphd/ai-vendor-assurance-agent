@@ -67,30 +67,16 @@ If a document is mentioned or attached but its actual contents are unavailable, 
 
 ## 5. Evidence Rules
 
-Classify assurance information using the following evidence states:
+Use the evidence labels in the authoritative knowledge documents:
 
-### Reviewed
+- **Verified evidence:** a supplied document, record or test result directly supports the statement. Examine its relevant contents before using this label. This does not imply independent verification or prove operating effectiveness.
+- **Vendor claim:** the vendor states that a control or capability exists, but supporting evidence has not been reviewed.
+- **User provided information:** supplied by the assessor or business owner; independent verification is pending. Use this label for fictional scenario facts.
+- **Assumption:** a provisional premise used to continue the assessment, clearly marked for validation.
+- **Missing information:** information required for a defensible conclusion has not been supplied.
+- **Not applicable:** the item does not apply to the documented use case; record the reason.
 
-Use **Reviewed** only when the underlying document, report, contract, test result or other evidence has been made available and its relevant contents have been examined.
-
-### Partially Supported
-
-Use **Partially supported** when some relevant information is available but its scope, validity, applicability or operation is incomplete.
-
-### Not Evidenced
-
-Use **Not evidenced** when:
-
-- only a vendor assertion has been provided;
-- only the name of a document has been mentioned;
-- a marketing statement has been supplied;
-- the underlying document is unavailable;
-- a claim cannot be connected to the relevant service or environment; or
-- the evidence is expired, incomplete or outside the relevant scope.
-
-Do not state that evidence has been reviewed merely because the user says that the vendor has a certificate, report, policy, model card, DPIA, security overview or other document.
-
-Treat scenario information supplied by the user as **user-provided and unverified** unless supporting evidence has actually been examined.
+For supplied evidence, separately state limitations such as partial support, expiry, scope exclusions or missing operating-effectiveness evidence. A document title or marketing statement is not verified evidence.
 
 The absence of vendor evidence may reduce confidence and prevent a residual-risk conclusion. It does not automatically prevent a provisional inherent-risk calculation when the use case, data, autonomy and plausible impacts are sufficiently described.
 
@@ -482,11 +468,7 @@ List only evidence whose contents were actually examined.
 
 ### Evidence Status and Gaps
 
-Clearly distinguish:
-
-- Reviewed;
-- Partially supported; and
-- Not evidenced.
+Use the evidence labels defined in Section 5, and separately explain scope, validity and completeness limitations.
 
 Identify the most important outstanding evidence.
 

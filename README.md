@@ -79,11 +79,13 @@ The output correctly treated marketing claims as unverified, rejected an expired
 
 ### NoteAssist — limited workplace summarisation
 
+**Latest documented result:** Moderate (16/36; average 1.78), with no mandatory escalation. The Low result below is retained as an **earlier test run**, before scoring-anchor calibration. The repository screenshots illustrate that earlier run; they do not substantiate the latest regression result.
+
 The contrasting scenario involved summarising internal, non-confidential meeting notes, with no decision or action authority and a narrow permitted-data scope.
 
-- Total: **12/36**
-- Average: **1.33**
-- Provisional tier: **Low**
+- Earlier-run total: **12/36**
+- Earlier-run average: **1.33**
+- Earlier-run provisional tier: **Low**
 - Mandatory escalation: **None identified**
 - Recommendation: **Proceed with Conditions**, subject to evidence validation
 
@@ -93,11 +95,16 @@ This test demonstrated proportionality: the agent did not over-escalate a limite
 
 ## Evidence discipline
 
-The agent uses three evidence states:
+The authoritative knowledge documents use these evidence labels:
 
-- **Reviewed:** the underlying document or control evidence was available and examined.
-- **Partially supported:** some relevant information was available, but scope or operation was incomplete.
-- **Not evidenced:** only an assertion, document title or marketing claim was supplied.
+- **Verified evidence:** a supplied document, record or test result directly supports the statement; this does not imply an independent audit.
+- **Vendor claim:** the vendor asserts a control or capability, but supporting evidence has not been reviewed.
+- **User provided information:** supplied by the assessor or business owner; independent verification is pending.
+- **Assumption:** a provisional premise, explicitly marked for validation.
+- **Missing information:** information needed for a defensible conclusion is unavailable.
+- **Not applicable:** outside the documented use case, with a recorded reason.
+
+For supplied evidence, separately describe whether support is complete or partial, including scope, recency and operating-effectiveness limitations. Scenario descriptions are user-provided information, not verified vendor evidence.
 
 Missing vendor evidence can limit confidence and prevent a residual-risk conclusion, but it does not automatically block a provisional inherent-risk assessment when the use case and plausible impacts are sufficiently described.
 
@@ -109,17 +116,21 @@ A third scenario, a frontier model provider (Northwind), found further problems:
 
 The anchors had side effects. A rule written for Northwind was too broad, and NoteAssist moved from 12/36 to 17/36 (Low to Moderate) because most dimensions defaulted to 2. The autonomy anchor was narrowed and a rule added to score 1 where a dimension is negligible.
 
-Final regression testing used the three scenarios above. Tier and escalation outcomes were identical across revised runs for NoteAssist (Moderate, no escalation), Northwind (High, escalation) and FinCredit (Critical, escalation). Totals varied by up to three points between runs (Northwind 23 to 26/36, FinCredit 30 to 31/36) without changing the tier. NoteAssist moved from Low (12/36) in early testing to Moderate (16/36) after scoring anchors were tightened; this is reported as a calibration change, not a regression, because third-party processing of internal data is defensibly above negligible.
+The following regression findings are author-reported; complete per-run transcripts and the final deployed instruction export are not included in this repository. Final regression testing used the three scenarios above. Tier and escalation outcomes were identical across revised runs for NoteAssist (Moderate, no escalation), Northwind (High, escalation) and FinCredit (Critical, escalation). Totals varied by up to three points between runs (Northwind 23 to 26/36, FinCredit 30 to 31/36) without changing the tier. NoteAssist moved from Low (12/36) in early testing to Moderate (16/36) after scoring anchors were tightened; this is reported as a calibration change, not a regression, because third-party processing of internal data is defensibly above negligible.
 
 ## Knowledge files
 
-The agent's knowledge files are in the repository as `.docx`, which are the versions loaded into the agent. Markdown copies are in `docs/` for easy reading and version comparison. If they differ, the `.docx` files are authoritative. The repository includes:
+The agent's knowledge files are in the repository as `.docx`, which are the versions loaded into the agent. Markdown copies are in `docs/` for easy reading and version comparison. If they differ, the `.docx` files are authoritative. The operating instructions use the same evidence labels as these knowledge documents. The published materials describe an advisory workflow requiring final human approval; this repository does not demonstrate a technical approval gate. The repository includes:
 
 1. `01_AI_Vendor_Assessment_Methodology.docx`
 2. `02_AI_Vendor_Risk_Scoring_and_Decision_Rules.docx`
 3. `03_AI_Vendor_Evidence_and_Control_Catalogue.docx`
 
 These documents define the assessment workflow, scoring logic, decision rules, evidence expectations and control catalogue used by the agent.
+
+## Documentation update
+
+The repository evidence labels have been aligned with the authoritative knowledge documents. Historical screenshots and reported regression results predate this documentation update. The deployed Copilot configuration has not been inspected or re-tested as part of this update; synchronise the revised operating instructions and repeat the scenario checks before claiming validation of this version.
 
 ## Limitations and human oversight
 
