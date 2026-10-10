@@ -96,7 +96,7 @@ Final regression testing produced consistent results for both the Critical FinCr
 
 ## Knowledge files
 
-The repository includes:
+The agent's knowledge files are in the repository as `.docx`, which are the versions loaded into the agent. Markdown copies are in `docs/` for easy reading and version comparison. If they differ, the `.docx` files are authoritative. The repository includes:
 
 1. `01_AI_Vendor_Assessment_Methodology.docx`
 2. `02_AI_Vendor_Risk_Scoring_and_Decision_Rules.docx`
