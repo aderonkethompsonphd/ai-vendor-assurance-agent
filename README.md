@@ -2,6 +2,8 @@
 
 An evidence-aware Microsoft Copilot agent for structured assessment of AI-enabled vendors. The project demonstrates practical AI governance: inherent-risk classification, evidence-gap analysis, third- and fourth-party dependency review, proportionate decision recommendations, and mandatory human approval.
 
+**Related:** the [AI Assurance Toolkit](https://github.com/aderonkethompsonphd/ai-assurance-toolkit) provides questionnaires, scoring and a frontier-developer assurance module. This agent applies a similar evidence-first approach as a human-in-the-loop assistant.
+
 ## Governance problem
 
 Vendor assessments often mix inherent risk with safeguards, treat unverified claims as evidence, or give inconsistent ratings. This agent applies a repeatable framework while making evidence limitations explicit.
