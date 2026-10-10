@@ -46,6 +46,17 @@ Safeguards such as certification, hosting location, contractual terms and human 
 
 ## Test Scenarios
 
+### Northwind Foundation Models: frontier model provider scenario (fictional)
+
+An energy utility proposes using a general-purpose language model API to summarise grid incident reports and draft operator advisories, with optional ticketing-system access and undisclosed subprocessors.
+
+- Average across revised runs: **2.78 to 2.89** (High)
+- Mandatory escalation: **Yes** (failure may affect safety or essential services)
+- Recommendation: **Escalate for Specialist Review**
+- Confidence: **Low to moderate**
+
+The agent treated the safety framework and system card as not evidenced, identified the undisclosed subprocessors and ticketing integration as risks, and stated that human review does not reduce inherent risk. The tier, escalation trigger and recommendation were identical in every revised run; individual dimension scores varied by one point on two dimensions.
+
 ### FinCredit AI — high-impact lending scenario
 
 The agent assessed an AI system producing consumer-loan approve/decline recommendations and risk scores. It processes identity and financial data, relies on an external foundation-model API for explanations, and normally expects employees to follow its recommendations.
